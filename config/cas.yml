@@ -1,0 +1,39 @@
+defaults: &defaults
+  login_ticket:
+    lifetime: 600
+  service_ticket:
+    lifetime_unconsumed: 300
+    lifetime_consumed: 86400
+  proxy_ticket:
+    lifetime_unconsumed: 300
+    lifetime_consumed: 86400
+  frontend:
+    sso_name: "SCPR Internal"
+    footer_text: "Southern California Public Radio"
+
+development:
+  <<: *defaults
+  authenticators:
+    scprv4:
+      authenticator: "ActiveRecord"
+      options:
+        connection:
+          adapter: mysql2
+          database: scprv4
+        table: auth_user
+        username_column: username
+        password_column: password_digest
+        extra_attributes:
+          email: email
+          superuser: is_superuser
+          active: can_login
+
+test:
+  <<: *defaults
+  authenticators:
+    static:
+      class: "CASino::StaticAuthenticator"
+      options:
+        users:
+          testuser:
+            password: "foobar123"
