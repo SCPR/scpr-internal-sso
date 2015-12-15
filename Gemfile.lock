@@ -120,6 +120,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.2)
+    newrelic_rpm (3.14.1.311)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
     phpass-ruby (0.1.2)
@@ -217,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  newrelic_rpm
   rails (~> 4.2.3)
   rufus-scheduler
   sass-rails (~> 5.0)
